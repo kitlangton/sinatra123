@@ -1,19 +1,28 @@
 <!-- Game -->
 <div id="game" class="row">
   <div class="col-xs-12">
-    
+
     <header class="page-header text-center">
       <h1>
         <a href="/">
           Tower Of Hanoi
         </a>
       </h1>
+      <% if tower_of_hanoi.win? %>
+        <h2 class='success'>You win</h2>
+      <% end %>
     </header>
 
-    <div class="towers row well"></div><!-- towers -->
+    <div class="towers row well"><!-- towers -->
+          <% tower_of_hanoi.towers.each_with_index do |tower, index| %>
+            <%= erb :tower, locals: { tower: tower, tower_number: index + 1} %>
+          <% end %>
+    </div>
 
       <div class="form row">
-        <div class="col-xs-6 col-xs-offset-3"></div>
+        <div class="col-xs-6 col-xs-offset-3">
+          <%= erb :form, locals: { tower_of_hanoi: tower_of_hanoi } %>
+        </div>
       </div><!-- form -->
 
   </div>

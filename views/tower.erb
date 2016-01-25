@@ -10,7 +10,7 @@ Where can we get this number from???
 
 <div class="tower tower-<%= tower_number %> col-xs-4">
 
-  <p class="tower-number text-center"></p>
+  <p class="tower-number text-center"><%= tower_number %></p>
 
   <div class="disks row">
 
@@ -22,8 +22,11 @@ Where can we get this number from???
     <% (3 - tower.length).times do |i| %>
       <div class="col-xs-12">&nbsp;</div>
     <% end %>
-    
-    <%# Render me some disks? %>
+
+
+    <% tower.each do |disk| %>
+      <%= erb :disk, locals: { disk: disk } %>
+    <% end %>
 
   </div><!-- disks -->
 </div><!-- tower -->
